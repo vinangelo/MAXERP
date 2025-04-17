@@ -1,0 +1,54 @@
+What
+
+
+
+
+Credit Hold Notes
+There are two possible Customer Status Codes that are set in this table, one for Release (i.e., “R”) and one for Hold (I.e., “H”). Upon entry, Customer Master records are coded as released, which indicates that it is okay to enter sales orders for them. If there is a problem with the customer (i.e., over credit limit, new pricing under negotiation, etc.), the Customer Master record may be placed on hold. This will provide a warning message if a new sales order is opened for the customer. The warning flag can be overridden.7 We will see later that a third Customer Status Code exists at the sales order level. A “C” code (i.e., cleared) will allow an individual line or order to be released without taking the Customer Master record off of hold status.
+
+There is a third at the line level. A “C”, cleared status may be given a line that is cleared, even though the customer may still be on hold.
+
+Credit Limit
+Include Unshipped (Y/N) – This switch is used in the Recalculate Unposted Orders batch function. It controls whether or not MAX adds the value of open orders to the unposted amount included in the Credit Limit Warning calculation. Setting it to “Y”, yes will include the value of all open orders in the Credit Limit calculation. Setting it to “N”, no will not include the value of open orders in the Credit Limit calculation. This is typically set to “Y”, yes.
+
+Warn on No Credit Available (Y/N) – If checked, MAX will give you a warning if the value of the line item entered exceeds the available credit of the customer. If not checked, no warning will be given. This is typically checked.
+
+Evaluate Credit By line Item (Y/N) – This modification provides the option to evaluate the consumption of a customer’s credit limit as each sales order line item is saved. The user will be notified by a pop-up message when the Credit Limit is exceeded by a particular line item.11 If checked, then the credit limit will be evaluated as the line item is saved. If not checked, then the credit limit will be evaluated as the sales order is saved.12
+
+
+
+Mass Change Options
+
+Mass Changing Dates and Credit Status
+Dates may be managed in bulk using the System Manager – Batch – Order Delivery Mass Change. This function allows bulk processing of due dates (both Customer and
+Current Due), as well as, Order Credit Status. This process only works on open sales orders (i.e., Order Status Code 3).
+
+To change either the Customer Due Date or the Current Due Date on a sales order, perform the following:
+• Select the start Order, Line and Delivery Number.
+• Select the ending Order, Line and Delivery Number.
+• Check the box for either the Current Due Date, the Customer Due Date or both.
+• Provide the date that you want to change. Only orders with an exact match to this date will be changed. If you want all orders to be changed, regardless of their current date check the “All Dates” checkbox. This will gray out the beginning date.
+• Provide the date that you want the dates changed to.
+• Select “No Action” from the Place Items on Hold/Release pull-down box. This will preserve the Credit Hold Status of each line item.
+• Press process.
+
+This function is also handy for managing those orders that are on credit hold, assuming that you have a large number of such orders at any one time. To place line items on hold or release perform the following:
+• Select the start Order, Line and Delivery Number.
+• Select the ending Order, Line and Delivery Number.
+• Uncheck both the Current Due Date and Customer Due Date check boxes.
+• Check the “All Dates” checkbox. This will gray out the beginning date.
+• Enter a date in the End Date field. Since both check boxes are unchecked, this has no effect. It is just required by the user interface.
+• Select “Place Line Items on Hold” from the Place Items on Hold/Release pull-down box. This will change the Order Credit Status to “On Hold” for all lines in the range.
+• Press process.
+
+To release line items on hold or release perform the following:
+• Select the start order line and delivery.
+• Select the ending order line and delivery.
+• Uncheck both the Current Due Date and Customer Due Date check boxes.
+• Check the “All Dates” checkbox. This will gray out the beginning date.
+• Enter a date in the end date. Since both check boxes are unchecked, this has no effect. It is just required.
+• Select “Release Line Item Holds” from the Place Items on Hold/Release pull-down box. This will release all lines in the range.
+• Press process.
+
+This functionality was introduced in MAX v4.0 and is still not used widely at the time of this writing. It is however a very handy function.
+
